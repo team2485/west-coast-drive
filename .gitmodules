@@ -1,0 +1,6 @@
+[submodule "src/main/java/frc/robot/subsystems/WarlordsLib"]
+	path = src/main/java/frc/robot/subsystems/WarlordsLib
+	url = https://github.com/team2485/WarlordsLib
+[submodule "WarlordsLib"]
+	path = WarlordsLib
+	url = https://github.com/team2485/WarlordsLib
