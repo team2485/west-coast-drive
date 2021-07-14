@@ -67,8 +67,6 @@ public class Drivetrain extends SubsystemBase  {
 
 
         SendableRegistry.add(this.m_drive, "DifferentialDrive");
-​
-​
     }
 
 
