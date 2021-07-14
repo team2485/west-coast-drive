@@ -25,3 +25,6 @@ pluginManagement {
         }
     }
 }
+
+    rootProject.name='west-coast-drive'
+    include 'WarlordsLib'
