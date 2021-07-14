@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import WarlordsLib.motorcontrol.WL_SparkMax;
+import WarlordsLib.motorcontrol.WL_TalonFX;
 import WarlordsLib.sensors.SparkMaxAlternateEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -24,12 +24,12 @@ public class Drivetrain extends SubsystemBase  {
     public static DifferentialDriveOdometry m_odometry;
 
     private WL_TalonFX m_talonLeft1Leader;
-    private WL_TalonFX m_sparkLeft2;
-    private WL_TalonFX m_sparkLeft3;
+    private WL_TalonFX m_talonLeft2;
+    private WL_TalonFX m_talonLeft3;
 
-    private WL_TalonFX m_sparkRight1Leader;
-    private WL_TalonFX m_sparkRight2;
-    private WL_TalonFX m_sparkRight3;
+    private WL_TalonFX m_talonRight1Leader;
+    private WL_TalonFX m_talonRight2;
+    private WL_TalonFX m_talonRight3;
 
     private SparkMaxAlternateEncoder m_encoderLeft;
     private SparkMaxAlternateEncoder m_encoderRight;
@@ -37,23 +37,23 @@ public class Drivetrain extends SubsystemBase  {
     private PigeonIMU m_pigeon;
 
     public Drivetrain() {
-        this.m_talonLeft1Leader = new WL_SparkMax(Constants.Drivetrain.SPARK_LEFT_PORT_LEADER);
-        this.m_talonLeft2 = new WL_SparkMax(Constants.Drivetrain.SPARK_LEFT_PORT_FOLLOWER_2);
-        this.m_talonLeft3 = new WL_SparkMax(Constants.Drivetrain.SPARK_LEFT_PORT_FOLLOWER_3);
+        this.m_talonLeft1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
+        this.m_talonLeft2 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_2);
+        this.m_talonLeft3 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_3);
 
-        this.m_talonRight1Leader = new WL_SparkMax(Constants.Drivetrain.SPARK_RIGHT_PORT_LEADER);
-        this.m_talonRight2 = new WL_SparkMax(Constants.Drivetrain.SPARK_RIGHT_PORT_FOLLOWER_2);
-        this.m_talonRight3 = new WL_SparkMax(Constants.Drivetrain.SPARK_RIGHT_PORT_FOLLOWER_3);
+        this.m_talonRight1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
+        this.m_talonRight2 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_2);
+        this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
 
         this.m_talonLeft1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
         this.m_talonRight1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
 
-        this.m_talonLeft1Leader.setFollowers(m_sparkLeft2, m_sparkLeft3);
-        this.m_talonRight1Leader.setFollowers(m_sparkRight2, m_sparkRight3);
+        this.m_talonLeft1Leader.setFollowers(m_talonLeft2, m_talonLeft3);
+        this.m_talonRight1Leader.setFollowers(m_talonRight2, m_talonRight3);
 
 
         this.m_pigeon = new PigeonIMU(Constants.Drivetrain.PIGEON_IMU_PORT);
-        this.m_drive = new DifferentialDrive(m_sparkLeft1Leader, m_sparkRight1Leader);
+        this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);
         this.m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(m_pigeon.getFusedHeading()));
 
         this.m_encoderLeft = new SparkMaxAlternateEncoder(Constants.Drivetrain.LEFT_ENCODER_SPARK, Constants.Drivetrain.ENCODER_CPR);
