@@ -16,4 +16,31 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class Drivetrain {
+    public static final int SPARK_LEFT_PORT_LEADER = 0;
+    public static final int SPARK_LEFT_PORT_FOLLOWER_2 = 0;
+    public static final int SPARK_LEFT_PORT_FOLLOWER_3 = 0;
+
+    public static final int SPARK_RIGHT_PORT_LEADER = 0;
+    public static final int SPARK_RIGHT_PORT_FOLLOWER_2 = 0;
+    public static final int SPARK_RIGHT_PORT_FOLLOWER_3 = 0;
+
+    public static final int LEFT_ENCODER_SPARK = 0;
+    public static final int RIGHT_ENCODER_SPARK = 0;
+
+    public static final int PIGEON_IMU_PORT = 0;
+
+    public static final int MAX_CURRENT = 18;
+
+    public static final int ENCODER_CPR = 250 * 4; // 4x encoding
+
+    public static final double WHEEL_RADIUS = 0; // inches
+
+    public static final double DISTANCE_PER_REVOLUTION = 2 * Math.PI * WHEEL_RADIUS;
+
+    public static final double STEERING_SCALE = 0.8;
+    public static final double THROTTLE_SCALE = 0.8;
+
+    public static final String RESET_GYRO_LABEL = "Zero Gyro";
+  }
 }
