@@ -17,16 +17,16 @@ package frc.robot;
  */
 public final class Constants {
   public static final class Drivetrain {
-    public static final int SPARK_LEFT_PORT_LEADER = 0;
-    public static final int SPARK_LEFT_PORT_FOLLOWER_2 = 0;
-    public static final int SPARK_LEFT_PORT_FOLLOWER_3 = 0;
+    public static final int TALON_LEFT_PORT_LEADER = 0;
+    public static final int TALON_LEFT_PORT_FOLLOWER_2 = 0;
+    public static final int TALON_LEFT_PORT_FOLLOWER_3 = 0;
 
-    public static final int SPARK_RIGHT_PORT_LEADER = 0;
-    public static final int SPARK_RIGHT_PORT_FOLLOWER_2 = 0;
-    public static final int SPARK_RIGHT_PORT_FOLLOWER_3 = 0;
+    public static final int TALON_RIGHT_PORT_LEADER = 0;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 0;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 0;
 
-    public static final int LEFT_ENCODER_SPARK = 0;
-    public static final int RIGHT_ENCODER_SPARK = 0;
+    public static final int LEFT_ENCODER_TALON = 0;
+    public static final int RIGHT_ENCODER_TALON = 0;
 
     public static final int PIGEON_IMU_PORT = 0;
 

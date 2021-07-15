@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import WarlordsLib.motorcontrol.WL_TalonFX;
-import WarlordsLib.sensors.SparkMaxAlternateEncoder;
+import WarlordsLib.sensors.TalonEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
@@ -31,8 +31,8 @@ public class Drivetrain extends SubsystemBase  {
     private WL_TalonFX m_talonRight2;
     private WL_TalonFX m_talonRight3;
 
-    private SparkMaxAlternateEncoder m_encoderLeft;
-    private SparkMaxAlternateEncoder m_encoderRight;
+    private TalonEncoder m_encoderLeft;
+    private TalonEncoder m_encoderRight;
 
     private PigeonIMU m_pigeon;
 
@@ -56,8 +56,8 @@ public class Drivetrain extends SubsystemBase  {
         this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);
         this.m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(m_pigeon.getFusedHeading()));
 
-        this.m_encoderLeft = new SparkMaxAlternateEncoder(Constants.Drivetrain.LEFT_ENCODER_SPARK, Constants.Drivetrain.ENCODER_CPR);
-        this.m_encoderRight = new SparkMaxAlternateEncoder(Constants.Drivetrain.RIGHT_ENCODER_SPARK, Constants.Drivetrain.ENCODER_CPR);
+        this.m_encoderLeft = new TalonEncoder(Constants.Drivetrain.LEFT_ENCODER_TALON, Constants.Drivetrain.ENCODER_CPR);
+        this.m_encoderRight = new TalonEncoder(Constants.Drivetrain.RIGHT_ENCODER_TALON, Constants.Drivetrain.ENCODER_CPR);
 
         this.m_encoderRight.setInverted(true);
 
