@@ -42,6 +42,7 @@ public class Drivetrain extends SubsystemBase  {
 
 	private PigeonIMU m_pigeon;
 
+
 	public Drivetrain() {
 		this.m_talonLeft1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
 		this.m_talonLeft2 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_2);
@@ -57,13 +58,14 @@ public class Drivetrain extends SubsystemBase  {
 		this.m_talonLeft1Leader.setFollowers(m_talonLeft2, m_talonLeft3);
 		this.m_talonRight1Leader.setFollowers(m_talonRight2, m_talonRight3);
 
+		
 
 		this.m_pigeon = new PigeonIMU(Constants.Drivetrain.PIGEON_IMU_PORT);
 		this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);
 		this.m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(m_pigeon.getFusedHeading()));
 
-		this.m_encoderLeft = new TalonEncoder(Constants.Drivetrain.LEFT_ENCODER_TALON, TalonEncoder.TalonEncoderType.ABSOLUTE, Constants.Drivetrain.ENCODER_CPR);
-		this.m_encoderRight = new TalonEncoder(Constants.Drivetrain.RIGHT_ENCODER_TALON,TalonEncoder.TalonEncoderType.ABSOLUTE, Constants.Drivetrain.ENCODER_CPR);
+		this.m_encoderLeft = new TalonEncoder(Constants.Drivetrain.LEFT_ENCODER_TALON, TalonEncoder.TalonEncoderType.QUADRATURE, Constants.Drivetrain.ENCODER_CPR);
+		this.m_encoderRight = new TalonEncoder(Constants.Drivetrain.RIGHT_ENCODER_TALON,TalonEncoder.TalonEncoderType.QUADRATURE, Constants.Drivetrain.ENCODER_CPR);
 
 //		this.m_encoderRight.setInverted(true);
 
