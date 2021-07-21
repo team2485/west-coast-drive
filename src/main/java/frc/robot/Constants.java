@@ -16,6 +16,24 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final String CONFIGS_FILE = "/home/lvuser/constants.csv";
+
+  public static final boolean DEBUG_MODE = true;
+
+  public static final double NOMINAL_VOLTAGE = 12;
+
+  public static final boolean TUNE_MODE = true;
+
+  public static final String PID_ENABLE_LABEL = "PID Enable";
+
+  public static final String TUNE_ENABLE_LABEL = "Tune Enable";
+
+  public static final String TUNE_LAYER_LABEL = "Tune Layer";
+
+  public static final String RESET_PID_LABEL = "Reset PID";
+
+  public static final double GRAVITY_ACCELERATION_CONSTANT = 9.8; //meters per second
+
   public static final class Drivetrain {
     public static final int TALON_LEFT_PORT_LEADER = 0;
     public static final int TALON_LEFT_PORT_FOLLOWER_2 = 0;
