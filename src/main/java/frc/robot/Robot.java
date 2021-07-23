@@ -104,6 +104,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    m_drivetrain.curvatureDrive(1, 0, false);
+    m_drivetrain.curvatureDrive(1, 0.5, false);
   }
 }

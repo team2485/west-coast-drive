@@ -39,12 +39,12 @@ public final class Constants {
     public static final int TALON_LEFT_PORT_FOLLOWER_2 = 0;
     public static final int TALON_LEFT_PORT_FOLLOWER_3 = 0;
 
-    public static final int TALON_RIGHT_PORT_LEADER = 0;
-    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 0;
-    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 0;
+    public static final int TALON_RIGHT_PORT_LEADER = 1;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 1;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 1;
 
     public static final int LEFT_ENCODER_TALON = 0;
-    public static final int RIGHT_ENCODER_TALON = 0;
+    public static final int RIGHT_ENCODER_TALON = 1;
 
     public static final int PIGEON_IMU_PORT = 0;
 
