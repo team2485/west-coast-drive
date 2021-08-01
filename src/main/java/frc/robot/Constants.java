@@ -35,16 +35,16 @@ public final class Constants {
   public static final double GRAVITY_ACCELERATION_CONSTANT = 9.8; //meters per second
 
   public static final class Drivetrain {
-    public static final int TALON_LEFT_PORT_LEADER = 0;
-    public static final int TALON_LEFT_PORT_FOLLOWER_2 = 0;
-    public static final int TALON_LEFT_PORT_FOLLOWER_3 = 0;
+    public static final int TALON_LEFT_PORT_LEADER = 1;
+    public static final int TALON_LEFT_PORT_FOLLOWER_2 = 2;
+    public static final int TALON_LEFT_PORT_FOLLOWER_3 = 100;
 
-    public static final int TALON_RIGHT_PORT_LEADER = 1;
-    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 1;
-    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 1;
+    public static final int TALON_RIGHT_PORT_LEADER = 12;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 13;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 100;
 
-    public static final int LEFT_ENCODER_TALON = 0;
-    public static final int RIGHT_ENCODER_TALON = 1;
+    public static final int LEFT_ENCODER_TALON = 1;
+    public static final int RIGHT_ENCODER_TALON = 12;
 
     public static final int PIGEON_IMU_PORT = 0;
 
@@ -60,6 +60,8 @@ public final class Constants {
     public static final double THROTTLE_SCALE = 0.8;
 
     public static final String RESET_GYRO_LABEL = "Zero Gyro";
+
+    public static final int CONTROLLER_PORT = 0;
   }
 
 //	public static final class Drivetrain {

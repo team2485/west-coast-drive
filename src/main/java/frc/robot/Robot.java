@@ -8,10 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Drivetrain;
 import frc.team2485.WarlordsLib.robotConfigs.RobotConfigs;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,6 +24,7 @@ import frc.team2485.WarlordsLib.robotConfigs.RobotConfigs;
 public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
   private Drivetrain m_drivetrain;
+  private XboxController m_controller;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -95,7 +98,7 @@ public class Robot extends TimedRobot {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
     RobotConfigs.getInstance().loadConfigsFromFile(Constants.CONFIGS_FILE);
-
+    m_controller = new XboxController(Constants.Drivetrain.CONTROLLER_PORT);
     m_drivetrain = new Drivetrain();
   }
 
@@ -104,6 +107,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    m_drivetrain.curvatureDrive(0.5, 0.5, false);
+    m_drivetrain.curvatureDrive((m_controller.getTriggerAxis(Hand.kRight)-m_controller.getTriggerAxis(Hand.kLeft)), 
+                                (m_controller.getX(Hand.kLeft)*Math.abs(m_controller.getX(Hand.kLeft))),
+                                m_controller.getXButton());
   }
 }
