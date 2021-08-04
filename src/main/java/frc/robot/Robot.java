@@ -107,8 +107,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    m_drivetrain.curvatureDrive((m_controller.getTriggerAxis(Hand.kRight)-m_controller.getTriggerAxis(Hand.kLeft)), 
-                                (m_controller.getX(Hand.kLeft)*Math.abs(m_controller.getX(Hand.kLeft))),
+    m_drivetrain.curvatureDrive(Constants.Drivetrain.THROTTLE_SCALE*(m_controller.getTriggerAxis(Hand.kRight)-m_controller.getTriggerAxis(Hand.kLeft)), 
+                                Constants.Drivetrain.STEERING_SCALE*(m_controller.getX(Hand.kLeft)*Math.abs(m_controller.getX(Hand.kLeft))),
                                 m_controller.getXButton());
   }
 }
