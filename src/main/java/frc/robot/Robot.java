@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -25,6 +28,9 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
   private Drivetrain m_drivetrain;
   private XboxController m_controller;
+  private TalonFX m_talon;
+  private TalonFX m_talon2;
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -100,6 +106,8 @@ public class Robot extends TimedRobot {
     RobotConfigs.getInstance().loadConfigsFromFile(Constants.CONFIGS_FILE);
     m_controller = new XboxController(Constants.Drivetrain.CONTROLLER_PORT);
     m_drivetrain = new Drivetrain();
+    // m_talon = new TalonFX(13);
+    // m_talon2 = new TalonFX(12);
   }
 
   /**
@@ -107,8 +115,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    m_drivetrain.curvatureDrive(Constants.Drivetrain.THROTTLE_SCALE*(m_controller.getTriggerAxis(Hand.kRight)-m_controller.getTriggerAxis(Hand.kLeft)), 
-                                Constants.Drivetrain.STEERING_SCALE*(m_controller.getX(Hand.kLeft)*Math.abs(m_controller.getX(Hand.kLeft))),
+
+    //EVERYTHING IS BACKWARDS AT THE MOMENT
+    m_drivetrain.curvatureDrive(Constants.Drivetrain.THROTTLE_SCALE*(m_controller.getTriggerAxis(Hand.kLeft)-m_controller.getTriggerAxis(Hand.kRight)), 
+                                -1*(Constants.Drivetrain.STEERING_SCALE*(m_controller.getX(Hand.kLeft)*Math.abs(m_controller.getX(Hand.kLeft)))),
                                 m_controller.getXButton());
+
+    // m_talon.set(ControlMode.PercentOutput,0.1);
+    // m_talon2.set(ControlMode.PercentOutput,0.1);
+
+
+
+
   }
 }
+

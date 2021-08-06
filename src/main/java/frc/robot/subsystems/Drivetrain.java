@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team2485.WarlordsLib.RampRate;
 import frc.team2485.WarlordsLib.motorcontrol.WL_SparkMax;
 import frc.team2485.WarlordsLib.motorcontrol.WL_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team2485.WarlordsLib.robotConfigs.RobotConfigs;
 import frc.team2485.WarlordsLib.sensors.SparkMaxAlternateEncoder;
@@ -31,9 +32,15 @@ public class Drivetrain extends SubsystemBase  {
 	private WL_TalonFX m_talonLeft2;
 	private WL_TalonFX m_talonLeft3;
 
+	// private WPI_TalonFX m_talonLeft1Leader;
+	// private WPI_TalonFX m_talonLeft2;
+
 	private WL_TalonFX m_talonRight1Leader;
 	private WL_TalonFX m_talonRight2;
 	private WL_TalonFX m_talonRight3;
+
+	// private WPI_TalonFX m_talonRight1Leader;
+	// private WPI_TalonFX m_talonRight2;
 
 	private TalonEncoder m_encoderLeft;
 	private TalonEncoder m_encoderRight;
@@ -46,17 +53,36 @@ public class Drivetrain extends SubsystemBase  {
 	public Drivetrain() {
 		this.m_talonLeft1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
 		this.m_talonLeft2 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_2);
-		this.m_talonLeft3 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_3);
+
+		// this.m_talonLeft1Leader = new WPI_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
+		// this.m_talonLeft2 = new WPI_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_2);
 
 		this.m_talonRight1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
 		this.m_talonRight2 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_2);
-		this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
+
+		// this.m_talonRight1Leader = new WPI_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
+		// this.m_talonRight2 = new WPI_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_2);
+		// this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
+		
+		// this.m_talonRight1Leader.setInverted(true);
+		// this.m_talonRight2.setInverted(true);
+
+
+		this.m_talonLeft1Leader.configFactoryDefault();
+		this.m_talonLeft2.configFactoryDefault();
+		this.m_talonRight1Leader.configFactoryDefault();
+		this.m_talonRight2.configFactoryDefault();
+
 
 //		this.m_talonLeft1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
 //		this.m_talonRight1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
 
-		this.m_talonLeft1Leader.setFollowers(m_talonLeft2, m_talonLeft3);
-		this.m_talonRight1Leader.setFollowers(m_talonRight2, m_talonRight3);
+		// this.m_talonLeft2.follow(m_talonLeft1Leader);
+		// this.m_talonRight2.follow(m_talonRight1Leader);
+
+		this.m_talonLeft1Leader.setFollowers(m_talonLeft2);
+		this.m_talonRight1Leader.setFollowers(m_talonRight2);
+
 
 		
 
@@ -99,9 +125,9 @@ public class Drivetrain extends SubsystemBase  {
 //	}
 
 	public void curvatureDrive(double throttle, double steering, boolean isQuickTurn) {
-		double throttleNextValue = m_throttleRamp.getNextValue(throttle);
-		m_drive.curvatureDrive(throttleNextValue, steering, isQuickTurn);
-		m_throttleRamp.setLastValue(throttleNextValue);
+		// double throttleNextValue = m_throttleRamp.getNextValue(throttle);
+		m_drive.curvatureDrive(throttle, steering, isQuickTurn);
+		// m_throttleRamp.setLastValue(throttleNextValue);
 	}
 
 	/**
@@ -110,8 +136,8 @@ public class Drivetrain extends SubsystemBase  {
 	 * @param posRight right encoder position
 	 */
 	public void resetEncoders(double posLeft, double posRight) {
-		m_encoderRight.resetPosition(posLeft);
 		m_encoderLeft.resetPosition(posRight);
+		m_encoderRight.resetPosition(posLeft);
 	}
 
 	public double getLeftEncoderPosition() {
