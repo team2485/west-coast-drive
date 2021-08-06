@@ -30,14 +30,14 @@ public class Drivetrain extends SubsystemBase  {
 
 	private WL_TalonFX m_talonLeft1Leader;
 	private WL_TalonFX m_talonLeft2;
-	private WL_TalonFX m_talonLeft3;
+	// private WL_TalonFX m_talonLeft3;
 
 	// private WPI_TalonFX m_talonLeft1Leader;
 	// private WPI_TalonFX m_talonLeft2;
 
 	private WL_TalonFX m_talonRight1Leader;
 	private WL_TalonFX m_talonRight2;
-	private WL_TalonFX m_talonRight3;
+	// private WL_TalonFX m_talonRight3;
 
 	// private WPI_TalonFX m_talonRight1Leader;
 	// private WPI_TalonFX m_talonRight2;
@@ -84,7 +84,6 @@ public class Drivetrain extends SubsystemBase  {
 		this.m_talonRight1Leader.setFollowers(m_talonRight2);
 
 
-		
 
 		this.m_pigeon = new PigeonIMU(Constants.Drivetrain.PIGEON_IMU_PORT);
 		this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);

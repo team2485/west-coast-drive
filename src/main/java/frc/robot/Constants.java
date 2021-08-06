@@ -35,12 +35,21 @@ public final class Constants {
   public static final double GRAVITY_ACCELERATION_CONSTANT = 9.8; //meters per second
 
   public static final class Drivetrain {
+<<<<<<< HEAD
     public static final int TALON_LEFT_PORT_LEADER = 13;
     public static final int TALON_LEFT_PORT_FOLLOWER_2 = 12;
     // public static final int TALON_LEFT_PORT_FOLLOWER_3 = 100;
 
     public static final int TALON_RIGHT_PORT_LEADER = 1;
     public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 2;
+=======
+    public static final int TALON_LEFT_PORT_LEADER = 1;
+    public static final int TALON_LEFT_PORT_FOLLOWER_2 = 2;
+    // public static final int TALON_LEFT_PORT_FOLLOWER_3 = 100;
+
+    public static final int TALON_RIGHT_PORT_LEADER = 12;
+    public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 13;
+>>>>>>> 3147bcdc8703995b9ee9b5e2839ae62c2d8e4a95
     // public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 100;
 
     public static final int LEFT_ENCODER_TALON = 12;
