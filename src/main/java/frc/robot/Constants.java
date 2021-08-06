@@ -37,11 +37,11 @@ public final class Constants {
   public static final class Drivetrain {
     public static final int TALON_LEFT_PORT_LEADER = 1;
     public static final int TALON_LEFT_PORT_FOLLOWER_2 = 2;
-    public static final int TALON_LEFT_PORT_FOLLOWER_3 = 100;
+    // public static final int TALON_LEFT_PORT_FOLLOWER_3 = 100;
 
     public static final int TALON_RIGHT_PORT_LEADER = 12;
     public static final int TALON_RIGHT_PORT_FOLLOWER_2 = 13;
-    public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 100;
+    // public static final int TALON_RIGHT_PORT_FOLLOWER_3 = 100;
 
     public static final int LEFT_ENCODER_TALON = 1;
     public static final int RIGHT_ENCODER_TALON = 12;

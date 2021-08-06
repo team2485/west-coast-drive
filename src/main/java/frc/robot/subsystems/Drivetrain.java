@@ -29,11 +29,11 @@ public class Drivetrain extends SubsystemBase  {
 
 	private WL_TalonFX m_talonLeft1Leader;
 	private WL_TalonFX m_talonLeft2;
-	private WL_TalonFX m_talonLeft3;
+	// private WL_TalonFX m_talonLeft3;
 
 	private WL_TalonFX m_talonRight1Leader;
 	private WL_TalonFX m_talonRight2;
-	private WL_TalonFX m_talonRight3;
+	// private WL_TalonFX m_talonRight3;
 
 	private TalonEncoder m_encoderLeft;
 	private TalonEncoder m_encoderRight;
@@ -46,19 +46,19 @@ public class Drivetrain extends SubsystemBase  {
 	public Drivetrain() {
 		this.m_talonLeft1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
 		this.m_talonLeft2 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_2);
-		this.m_talonLeft3 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_3);
+		// this.m_talonLeft3 = new WL_TalonFX(Constants.Drivetrain.TALON_LEFT_PORT_FOLLOWER_3);
 
 		this.m_talonRight1Leader = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
 		this.m_talonRight2 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_2);
-		this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
+		// this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
 
 //		this.m_talonLeft1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
 //		this.m_talonRight1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
 
-		this.m_talonLeft1Leader.setFollowers(m_talonLeft2, m_talonLeft3);
-		this.m_talonRight1Leader.setFollowers(m_talonRight2, m_talonRight3);
+		this.m_talonLeft1Leader.setFollowers(m_talonLeft2);
+		this.m_talonRight1Leader.setFollowers(m_talonRight2);
 
-		
+
 
 		this.m_pigeon = new PigeonIMU(Constants.Drivetrain.PIGEON_IMU_PORT);
 		this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);
