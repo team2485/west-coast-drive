@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team2485.WarlordsLib.RampRate;
 import frc.team2485.WarlordsLib.motorcontrol.WL_SparkMax;
 import frc.team2485.WarlordsLib.motorcontrol.WL_TalonFX;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team2485.WarlordsLib.robotConfigs.RobotConfigs;
@@ -26,6 +28,8 @@ import frc.robot.Constants;
 public class Drivetrain extends SubsystemBase  {
 
 	private DifferentialDrive m_drive;
+	private DifferentialDrive m_drive2;
+
 	public static DifferentialDriveOdometry m_odometry;
 
 	private WL_TalonFX m_talonLeft1Leader;
@@ -63,30 +67,24 @@ public class Drivetrain extends SubsystemBase  {
 		// this.m_talonRight1Leader = new WPI_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
 		// this.m_talonRight2 = new WPI_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_2);
 		// this.m_talonRight3 = new WL_TalonFX(Constants.Drivetrain.TALON_RIGHT_PORT_FOLLOWER_3);
-		
-		// this.m_talonRight1Leader.setInverted(true);
-		// this.m_talonRight2.setInverted(true);
+
+		// this.m_talonLeft1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
+		// this.m_talonRight1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
+
+		// this.m_talonLeft2.follow(this.m_talonLeft1Leader);
+		// this.m_talonRight2.follow(this.m_talonRight1Leader);
 
 
-		this.m_talonLeft1Leader.configFactoryDefault();
-		this.m_talonLeft2.configFactoryDefault();
-		this.m_talonRight1Leader.configFactoryDefault();
-		this.m_talonRight2.configFactoryDefault();
 
-
-//		this.m_talonLeft1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
-//		this.m_talonRight1Leader.setSmartCurrentLimit(Constants.Drivetrain.MAX_CURRENT);
-
-		// this.m_talonLeft2.follow(m_talonLeft1Leader);
-		// this.m_talonRight2.follow(m_talonRight1Leader);
+		this.m_talonLeft2.set(ControlMode.Follower, Constants.Drivetrain.TALON_LEFT_PORT_LEADER);
+		this.m_talonRight2.set(ControlMode.Follower, Constants.Drivetrain.TALON_RIGHT_PORT_LEADER);
 
 		this.m_talonLeft1Leader.setFollowers(m_talonLeft2);
 		this.m_talonRight1Leader.setFollowers(m_talonRight2);
 
-
-
 		this.m_pigeon = new PigeonIMU(Constants.Drivetrain.PIGEON_IMU_PORT);
 		this.m_drive = new DifferentialDrive(m_talonLeft1Leader, m_talonRight1Leader);
+		this.m_drive2 = new DifferentialDrive(m_talonLeft2, m_talonRight2);
 		this.m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(m_pigeon.getFusedHeading()));
 
 		this.m_encoderLeft = new TalonEncoder(Constants.Drivetrain.LEFT_ENCODER_TALON, TalonEncoder.TalonEncoderType.QUADRATURE, Constants.Drivetrain.ENCODER_CPR);
@@ -126,6 +124,7 @@ public class Drivetrain extends SubsystemBase  {
 	public void curvatureDrive(double throttle, double steering, boolean isQuickTurn) {
 		// double throttleNextValue = m_throttleRamp.getNextValue(throttle);
 		m_drive.curvatureDrive(throttle, steering, isQuickTurn);
+		m_drive2.curvatureDrive(throttle, steering, isQuickTurn);
 		// m_throttleRamp.setLastValue(throttleNextValue);
 	}
 
