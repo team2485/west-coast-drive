@@ -1,4 +1,4 @@
-
+//hi, i was here
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
@@ -29,6 +29,8 @@ public class Drivetrain extends SubsystemBase  {
 
 	private DifferentialDrive m_drive;
 	private DifferentialDrive m_drive2;
+
+	int x;
 
 	public static DifferentialDriveOdometry m_odometry;
 
